@@ -12,6 +12,16 @@ namespace ExcelWebProject
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["error"] != null && !string.IsNullOrEmpty(Session["error"].ToString()))
+            {
+                Response.Write($"<script> alert('{Session["error"].ToString()}')</script>");
+                Session["error"] = null;
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            throw new Exception("Outro error.");
         }
     }
 }
