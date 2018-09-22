@@ -11,6 +11,9 @@ namespace ExcelWebProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ExcelIO<Teste> excel = new ExcelWebProject.ExcelIO<ExcelWebProject.Teste>();
+            List<ExcelError> erros = new List<ExcelWebProject.ExcelError>();
+            var lista = excel.LerArquivo(Request.PhysicalApplicationPath +  @"\Arquivos\Pasta1.xlsx", "Plan1", out erros);
             if(Session["error"] != null && !string.IsNullOrEmpty(Session["error"].ToString()))
             {
                 Response.Write($"<script> alert('{Session["error"].ToString()}')</script>");
